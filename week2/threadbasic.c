@@ -15,8 +15,10 @@ int main()
 {
     pthread_t thread_id;
     printf("Before Thread\n");
-    pthread_create(&thread_id, NULL, myThreadFun, NULL);
-    pthread_join(thread_id, NULL);
+    for (i = 0; i < 3; i++)
+        pthread_create(&tid, NULL, myThreadFun, (void *)&i);
+    for (i = 0; i < 3; i++)
+    	pthread_join(tid, NULL);
     printf("After Thread\n");
     exit(0);
 }
